@@ -24,5 +24,29 @@ namespace Practica0
         {
             InitializeComponent();
         }
+
+        private void ButtonFirst_Click(object sender, RoutedEventArgs e)
+        {
+            if(unaEtiqueta.Foreground == Brushes.Red)
+            {
+                unaEtiqueta.Foreground = Brushes.Blue;
+            }
+            else
+            {
+                unaEtiqueta.Foreground = Brushes.Red;
+            }
+        }
+
+        private void ButtonSecond_Click(object sender, RoutedEventArgs e)
+        {
+            if(dosEtiqueta.Foreground == Brushes.Blue)
+            {
+                dosEtiqueta.Foreground = Brushes.Red;
+            }
+            else
+            {
+                dosEtiqueta.Foreground = Brushes.Blue;
+            }
+        }
     }
 }
