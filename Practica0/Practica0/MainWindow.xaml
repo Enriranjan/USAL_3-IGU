@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Hola mundo" Height="450" Width="800">
     <StackPanel Orientation="Horizontal">
-        <Label Name="unaEtiqueta" Content="Primera etiqueta" Margin="40,10" Foreground="Red"/>
+        <Label Name="unaEtiqueta" Content="Primera etiqueta" Margin="40,10" Foreground="Red" FontSize="20" FontWeight="Bold"/>
         <Label Name="dosEtiqueta" Content="Segunda etiqueta" Margin="50" Foreground="Blue"/>
         <StackPanel Orientation="Vertical">
             <Button Name="ButtonFirst" Margin="10" Click="ButtonFirst_Click">
