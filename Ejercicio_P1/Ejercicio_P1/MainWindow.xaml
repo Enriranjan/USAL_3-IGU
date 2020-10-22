@@ -5,11 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ejercicio_P1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="InversoMayusculador" Height="450" Width="800"
         MinHeight="450"
         MinWidth="800"
         >
-        
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -21,17 +20,30 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Name="BotonInvierte" Grid.Column="0" Grid.Row="0" Margin="50,50">
+        <Button Name="BotonInvierte" Grid.Column="0" Grid.Row="0" Margin="50,50" Click="BotonInvierte_Click">
             Invierte
         </Button>
-        <Button Name="BotonMayusculas" Grid.Column="0" Grid.Row="1" Margin="50,50">
+        <Button Name="BotonBorra" Grid.Row="0" Grid.Column="2" Margin="200,50,25,50" Click="BotonBorra_Click">
+            <Image Source="Content\x.png"/>
+        </Button>
+        <Button Name="BotonMayusculas" Grid.Column="0" Grid.Row="1" Margin="50,50" Click="BotonMayusculas_Click">
             Mayusculas
         </Button>
-        <TextBox Name="CajaTextoInvierte" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="50,50" FontSize="20" TextAlignment="Center">
+        <Button Name="AnteriorImagen" Grid.Column="0" Grid.Row="2" Margin="75,50,150,50">
+            <Image Source="Content\60577.png"/>
+        </Button>
+        <Button Name="SiguienteImagen" Grid.Column="0" Grid.Row="2" Margin="150,50,75,50" Click="SiguienteImagen_Click">
+            <Image Source="Content\60546.png"/>
+        </Button>
+        <TextBox Name="CajaTexto" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="25,50,75,50" FontSize="20" TextAlignment="Center">
             Introduce el texto aqui
         </TextBox>
-        <TextBlock Name="ResultadoConversion" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="50,50" FontSize="20" TextAlignment="Center">
+        <TextBlock Name="ResultadoConversion" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="25,50,75,50" FontSize="20" TextAlignment="Center" Foreground="#FFE41717" Background="White">
             Aqui va el resultado de la conversion
         </TextBlock>
     </Grid>
+
+    <Window.Background>
+        <ImageBrush ImageSource="Content/space_background.jpg" Opacity="0.5" />
+    </Window.Background>
 </Window>
