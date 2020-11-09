@@ -22,17 +22,17 @@ namespace ClasesAcopladas
     {
         TrabajoDuro tb;
 
-        public observador()
-        {
-            tb = new TrabajoDuro();
-            tb.Callback = InformeAvance;
-            tb.Callback += new TipoAviso(InformeAvance2);
+        public observador() 
+        { 
+            tb = new TrabajoDuro(); 
+            tb.callback += InformeAvance;
+            tb.callback += InformeAvance2;
         }
 
         public void funciona()
         {
             Console.WriteLine("Vamos a probar el informe");
-            tb.ATrabajar();
+            tb.ATrabajar(InformeAvance);
             Console.WriteLine("Terminado");
         }
 
@@ -66,16 +66,15 @@ namespace ClasesAcopladas
     class TrabajoDuro
     {
         int PocentajeHecho;
-        TipoAviso callback;
-
+        /*cada evento se corresponde con una delegacion*/
+        public event TipoAviso callback;
 
         public TrabajoDuro()
         {
             PocentajeHecho = 0;
         }
 
-       
-        public void ATrabajar()
+        public void ATrabajar(TipoAviso callback)
         {
             int i;
             for (i = 0; i < 500; i++)

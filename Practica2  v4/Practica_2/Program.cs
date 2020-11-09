@@ -22,17 +22,17 @@ namespace ClasesAcopladas
     {
         TrabajoDuro tb;
 
-        public observador()
-        {
-            tb = new TrabajoDuro();
-            tb.Callback = InformeAvance;
-            tb.Callback += new TipoAviso(InformeAvance2);
+        public observador() 
+        { 
+            tb = new TrabajoDuro(); 
+            tb.callback += InformeAvance;
+            tb.callback += InformeAvance2;
         }
 
         public void funciona()
         {
             Console.WriteLine("Vamos a probar el informe");
-            tb.ATrabajar();
+            tb.ATrabajar(InformeAvance);
             Console.WriteLine("Terminado");
         }
 
@@ -65,17 +65,16 @@ namespace ClasesAcopladas
 
     class TrabajoDuro
     {
-        int PocentajeHecho;
-        TipoAviso callback;
-
+        int PorcentajeHecho;
+        /*cada evento se corresponde con una delegacion*/
+        public event TipoAviso callback;
 
         public TrabajoDuro()
         {
-            PocentajeHecho = 0;
+            PorcentajeHecho = 0;
         }
 
-       
-        public void ATrabajar()
+        public void ATrabajar(TipoAviso callback)
         {
             int i;
             for (i = 0; i < 500; i++)
@@ -84,21 +83,21 @@ namespace ClasesAcopladas
                 switch (i)
                 {
                     case 125:
-                        PocentajeHecho = 25;
+                        PorcentajeHecho = 25;
                         if(callback != null)
                         {
                             callback(PorcentajeHecho);
                         }
                         break;
                     case 250:
-                        PocentajeHecho = 50;
+                        PorcentajeHecho = 50;
                         if(callback != null)
                         {
                             callback(PorcentajeHecho);
                         }
                         break;
                     case 375:
-                        PocentajeHecho = 75;
+                        PorcentajeHecho = 75;
                         if(callback != null)
                         {
                             callback(PorcentajeHecho);
