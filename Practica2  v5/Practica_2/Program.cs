@@ -32,51 +32,68 @@ namespace ClasesAcopladas
         public void funciona()
         {
             Console.WriteLine("Vamos a probar el informe");
-            tb.ATrabajar(InformeAvance);
+            tb.ATrabajar();
             Console.WriteLine("Terminado");
         }
 
         public void funciona2()
         {
             Console.WriteLine("Vamos a probar el informe");
-            tb.ATrabajar(InformeAvance2);
+            tb.ATrabajar();
             Console.WriteLine("Terminado");
         }
 
         /*puede ser privada puesto que la invocacion se hace desde esta misma clase*/
-        private void InformeAvance(int x)
+        /*a las funciones evento siempre le pasamos estos dos parametros:
+         * object el que llama al evento
+         * EventArgs los argumentos*/
+        private void InformeAvance(object sender, PorcentajeHechoEventArgs ph)
         {
-            string str = String.Format("Ya llevamos el {0}", x);
+            string str = String.Format("Ya llevamos el {0}", ph.PorcentajeHecho);
             Console.WriteLine(str);
         }
 
         /*puede ser privada puesto que la invocacion se hace desde esta misma clase*/
-        private void InformeAvance2(int x)
+        private void InformeAvance2(object sender, PorcentajeHechoEventArgs ph)
         {
-            string str = String.Format("Ya llevamos el {0}", x);
+            string str = String.Format("Ya llevamos el {0}", ph.PorcentajeHecho);
             Console.WriteLine(str);
         }
     }
 
+    class PorcentajeHechoEventArgs : EventArgs
+    {
+        public int PorcentajeHecho
+        {
+            get;
+            set;
+        }
+    }
 
-    //Creamos un delegado que devuelve void (nada) y se le pasa como parametro un int
-    delegate void TipoAviso(int x);
-    /*El nombre asignado es un tipo de dato (TipoAviso)*/
 
     class TrabajoDuro
     {
         int PocentajeHecho;
-        /*cada evento se corresponde con una delegacion*/
-        public event TipoAviso callback;
+
+        public event EventHandler<PorcentajeHechoEventArgs> callback;
 
         public TrabajoDuro()
         {
             PocentajeHecho = 0;
         }
 
-        public void ATrabajar(TipoAviso callback)
+        protected virtual void OnPorcentajeHecho(PorcentajeHechoEventArgs e)
+        {
+            /*los eventos siempre envian el remitente como primer parametro, y luego la informacion
+             * del parametro en e*/
+            callback?.Invoke(this, e);
+        }
+
+        public void ATrabajar()
         {
             int i;
+            PorcentajeHechoEventArgs ph = new PorcentajeHechoEventArgs();
+
             for (i = 0; i < 500; i++)
             {
                 System.Threading.Thread.Sleep(1); //Hacemos el trabajo
@@ -84,27 +101,24 @@ namespace ClasesAcopladas
                 {
                     case 125:
                         PocentajeHecho = 25;
-                        if(callback != null)
-                        {
-                            callback(PorcentajeHecho);
-                        }
+
+                        ph.PorcentajeHecho = this.PocentajeHecho;
+                        OnPorcentajeHecho(ph);
+
                         break;
                     case 250:
                         PocentajeHecho = 50;
-                        if(callback != null)
-                        {
-                            callback(PorcentajeHecho);
-                        }
+
+                        ph.PorcentajeHecho = this.PocentajeHecho;
+                        OnPorcentajeHecho(ph);
+
                         break;
                     case 375:
                         PocentajeHecho = 75;
-                        if(callback != null)
-                        {
-                            callback(PorcentajeHecho);
-                            //callback?.Invoke(PorcentajeHecho);
-                            /*si callback es distinto de null invoca lo referenciado por el delegado
-                             * y le pasamos como parametro el PorcentajeHecho*/
-                        }
+
+                        ph.PorcentajeHecho = this.PocentajeHecho;
+                        OnPorcentajeHecho(ph);
+
                         break;
                 }
             }
