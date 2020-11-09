@@ -82,21 +82,21 @@ namespace ClasesAcopladas
                         PocentajeHecho = 25;
                         if(callback != null)
                         {
-                            callback(PocentajeHecho);
+                            callback(PorcentajeHecho);
                         }
                         break;
                     case 250:
                         PocentajeHecho = 50;
                         if(callback != null)
                         {
-                            callback(PocentajeHecho);
+                            callback(PorcentajeHecho);
                         }
                         break;
                     case 375:
                         PocentajeHecho = 75;
                         if(callback != null)
                         {
-                            callback(PocentajeHecho);
+                            callback(PorcentajeHecho);
                             //callback?.Invoke(PorcentajeHecho);
                             /*si callback es distinto de null invoca lo referenciado por el delegado
                              * y le pasamos como parametro el PorcentajeHecho*/
