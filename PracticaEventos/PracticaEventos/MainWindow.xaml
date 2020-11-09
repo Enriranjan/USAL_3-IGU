@@ -1,0 +1,48 @@
+﻿<Window x:Class="PracticaEventos.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PracticaEventos"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <Grid x:Name="ElGrid" Background="Transparent" Focusable="True"
+        KeyDown = "ElGrid_KeyDown"
+        MouseDown = "ElGrid_MouseDown"
+        MouseMove = "ElGrid_MouseMove">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle x:Name="ElRectangulo" MouseDown="ElRectanguloMouseDown_1" Fill="Transparent"
+        Grid.Row="2" Grid.Column="6" Stroke="DarkRed" RenderTransformOrigin="0.5, 0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="sc" ScaleX="1" ScaleY="1"/>
+                    <RotateTransform x:Name="rt" Angle="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        
+            
+    </Grid>
+</Window>
